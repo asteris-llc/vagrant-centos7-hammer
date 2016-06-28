@@ -13,7 +13,8 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--memory", "8192"]
   end
 
-  ["bootstrap.sh", "guest-additions.sh"].each do |script|
-    config.vm.provision "shell", path: "scripts/#{script}"
-  end
+  config.vm.provision "shell", path: "scripts/update-os.sh"
+  config.vm.provision :reload
+  config.vm.provision "shell", path: "scripts/bootstrap.sh"
+  config.vm.provision "shell", path: "scripts/guest-additions.sh"
 end
