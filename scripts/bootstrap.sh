@@ -1,3 +1,5 @@
+set -e
+
 yum groupinstall -y 'Development Tools'
 
 # install go and hammer
